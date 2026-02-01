@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
@@ -8,55 +8,68 @@ const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  preload: true,
 })
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
+  preload: true,
 })
 
+// Separate viewport export for Next.js 14+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a1a2e" },
+  ],
+}
+
 export const metadata: Metadata = {
-  title: "Nesture Interiors - Best Interior Designer in Bangalore | Transform Your Space",
+  title: "Vadodara Homes | Real Estate Property Flats Houses in Vadodara",
   description:
-    "Nesture Interiors - Where innovation meets elegance. Expert residential & commercial interior design in Bangalore, Karnataka. Beautiful interiors yet affordable. Free consultation & 3D visualization. Call +91 861 808 0171",
+    "Find your dream home in Vadodara. Flats, houses, villas, commercial properties for sale & rent. 60+ localities covered. Trusted real estate agents. Call now for free consultation.",
   keywords:
-    "interior design Bangalore, home interior design, office interior design, commercial interiors, space planning, interior decorator Bangalore, home renovation Bangalore, luxury interiors, modern design, interior styling, furniture design, kitchen design, bedroom interior, living room design, interior design services, best interior designer Bangalore, Nesture Interiors",
-  authors: [{ name: "Nesture Interiors Bangalore" }],
-  creator: "Nesture Interiors",
-  publisher: "Nesture Interiors",
+    "real estate vadodara, property vadodara, flats for sale vadodara, houses vadodara, villas vadodara, commercial property vadodara, buy property vadodara",
+  authors: [{ name: "Vadodara Homes" }],
+  creator: "Vadodara Homes",
+  publisher: "Vadodara Homes",
   formatDetection: {
     email: true,
     address: true,
     telephone: true,
   },
-  metadataBase: new URL("https://nestureinteriors.com"),
+  metadataBase: new URL("https://vadodarahomes.in"),
   alternates: {
-    canonical: "https://nestureinteriors.com",
+    canonical: "https://vadodarahomes.in",
   },
   openGraph: {
-    title: "Nesture Interiors - Best Interior Designer in Bangalore",
+    title: "Vadodara Homes | Real Estate & Property in Vadodara",
     description:
-      "Transform your space with Nesture Interiors - Where innovation meets elegance. Residential & commercial interior design in Bangalore with expert craftsmanship.",
-    url: "https://nestureinteriors.com",
-    siteName: "Nesture Interiors",
+      "Find your dream home in Vadodara. Flats, houses, villas & commercial properties. 60+ localities. Trusted agents.",
+    url: "https://vadodarahomes.in",
+    siteName: "Vadodara Homes",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://nestureinteriors.com/og-image.jpg",
+        url: "https://vadodarahomes.in/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Nesture Interiors - Premium Interior Design in Bangalore",
+        alt: "Vadodara Homes - Real Estate Property",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nesture Interiors - Best Interior Designer in Bangalore",
-    description: "Expert interior design for homes, offices & commercial spaces. Where innovation meets elegance. Transform your space today!",
-    images: ["https://nestureinteriors.com/og-image.jpg"],
-    creator: "@nestureinteriors",
+    title: "Vadodara Homes | Real Estate in Vadodara",
+    description: "Find flats, houses, villas & commercial properties in Vadodara. 60+ localities covered.",
+    images: ["https://vadodarahomes.in/og-image.jpg"],
+    creator: "@vadodarahomes",
   },
   robots: {
     index: true,
@@ -68,11 +81,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
   },
   icons: {
     icon: [
@@ -93,7 +101,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "google-site-verification-code",
+    // Add other verifications as needed
+    // yandex: "yandex-verification-code",
+    // bing: "bing-verification-code",
   },
+  category: "real estate",
 }
 
 export default function RootLayout({
@@ -105,76 +117,45 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
-        "@id": "https://nestureinteriors.com/#organization",
-        name: "Nesture Interiors",
-        image: "https://nestureinteriors.com/logo.png",
-        description: "Where innovation meets elegance - Expert residential & commercial interior design services in Bangalore, Karnataka",
-        url: "https://nestureinteriors.com",
-        telephone: "+918618080171",
-        email: "nestureinterior@gmail.com",
+        "@type": "RealEstateAgent",
+        "@id": "https://vadodarahomes.in/#organization",
+        name: "Vadodara Homes",
+        image: "https://vadodarahomes.in/logo.png",
+        description: "Find your dream home in Vadodara. Flats, houses, villas & commercial properties for sale and rent across 60+ localities.",
+        url: "https://vadodarahomes.in",
+        telephone: "+916353583148",
+        email: "info@vadodarahomes.in",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Nesture Interiors",
-          addressLocality: "Bangalore",
-          addressRegion: "KA",
-          postalCode: "560001",
+          streetAddress: "Race Course Road",
+          addressLocality: "Vadodara",
+          addressRegion: "Gujarat",
+          postalCode: "390007",
           addressCountry: "IN",
         },
         sameAs: [],
-        priceRange: "$$$",
+        priceRange: "₹₹-₹₹₹₹",
         serviceArea: {
           "@type": "City",
-          name: "Bangalore",
+          name: "Vadodara",
         },
-        areaServed: ["Koramangala", "Indiranagar", "Whitefield", "HSR Layout", "Jayanagar", "JP Nagar", "Marathahalli", "Electronic City"],
+        areaServed: ["Vadodara", "Alkapuri", "Race Course", "Manjalpur", "Gotri", "Vasna", "Karelibaug", "Fatehgunj", "Sayajigunj", "Akota", "Harni", "Tandalja", "Subhanpura", "Makarpura", "Nizampura"],
       },
       {
         "@type": "Organization",
-        "@id": "https://nestureinteriors.com/#organization",
-        name: "Nesture Interiors",
-        url: "https://nestureinteriors.com",
-        logo: "https://nestureinteriors.com/logo.png",
-        foundingDate: "2024",
-        founders: [{ "@type": "Person", name: "Nesture Interiors Team" }],
+        "@id": "https://vadodarahomes.in/#organization",
+        name: "Vadodara Homes",
+        url: "https://vadodarahomes.in",
+        logo: "https://vadodarahomes.in/logo.png",
+        foundingDate: "2010",
         knowsAbout: [
-          "Interior Design",
-          "Home Design",
-          "Office Interior Design",
-          "Commercial Interior Design",
-          "Space Planning",
-          "Furniture Design",
+          "Real Estate",
+          "Property Consulting",
+          "Flats for Sale",
+          "Commercial Property",
+          "Residential Property",
+          "Property Investment",
         ],
-      },
-      {
-        "@type": "Service",
-        "@id": "https://nestureinteriors.com/#service-residential",
-        name: "Residential Interior Design",
-        description: "Professional residential interior design services including space planning, 3D visualization, and complete project management",
-        provider: {
-          "@id": "https://nestureinteriors.com/#organization",
-        },
-        areaServed: "Bangalore",
-        priceRange: "$$$",
-      },
-      {
-        "@type": "Service",
-        "@id": "https://nestureinteriors.com/#service-commercial",
-        name: "Commercial Interior Design",
-        description: "Expert commercial and office interior design with brand integration and complete installation supervision",
-        provider: {
-          "@id": "https://nestureinteriors.com/#organization",
-        },
-        areaServed: "Bangalore",
-        priceRange: "$$$$",
-      },
-      {
-        "@type": "AggregateRating",
-        "@id": "https://nestureinteriors.com/#rating",
-        ratingValue: "4.9",
-        ratingCount: "150",
-        bestRating: "5",
-        worstRating: "1",
       },
     ],
   }
@@ -182,6 +163,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfairDisplay.variable} ${inter.variable}`}>
       <head>
+        {/* Manifest for PWA */}
+        <link rel="manifest" href="/manifest.json" />
+        
+        {/* Preconnect to external domains for performance */}
+        <link rel="preconnect" href="https://picsum.photos" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* DNS prefetch for analytics */}
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        
+        {/* JSON-LD Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
